@@ -1,0 +1,25 @@
+{% extends 'layout.html' %}
+
+{% block main %}
+{% block popup %}{% endblock %}
+<table class="table">
+    <thead>
+        <tr>
+            <th class="text-start">Symbol</th>
+            <th class="text-end">Shares</th>
+            <th class="text-end">Price</th>
+            <th class="text-end">Transacted</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for i in l %}
+            <tr>
+                <td class="text-start">{{i["symbol"]}}</td>
+                <td class="text-end">{{i["shares"]}}</td>
+                <td class="text-end">{{i["price"]|usd}}</td>
+                <td class="text-end">{{i["timestamp"]}}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
