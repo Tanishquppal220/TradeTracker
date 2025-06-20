@@ -81,29 +81,10 @@ GET /quote?symbol={SYMBOL}
 
 ## Contributing Guidelines  
 1. **Branching Strategy**:  
-   - Feature branches from `develop`  
+   - Feature branches from `main`  
    - PR reviews required before merging  
 
 2. **Code Standards**:  
    - PEP8 compliance  
    - Type hints for complex functions  
    - Docstrings for all public methods  
-
-3. **Testing**:  
-   - Unit tests for transaction logic  
-   - Integration tests for API endpoints  
-
-```python
-# Example modular component
-@app.route("/buy", methods=["GET", "POST"])
-@login_required
-def buy():
-    """Handle stock purchase transactions"""
-    if request.method == "POST":
-        try:
-            process_transaction(1)
-            flash("Purchase Successful!")
-            return redirect("/")
-        except Exception as e:
-            return handle_error(e)
-    return render_buy_form()
