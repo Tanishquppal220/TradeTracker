@@ -46,22 +46,37 @@ def login_required(f):
 
 
 def lookup(symbol):
-    """Look up quote for symbol."""
-    url = f"https://finance.cs50.io/quote?symbol={symbol.upper()}"
+    """Look up quote for symbol using YFinance."""
     try:
-        response = requests.get(url)
-        response.raise_for_status()  # Raise an error for HTTP error responses
-        quote_data = response.json()
+        import yfinance as yf
+        
+        # Get the ticker information
+        ticker = yf.Ticker(symbol.upper())
+        
+        # Get the latest market data
+        ticker_data = ticker.info
+        
+        # Check if we got valid data
+        if not ticker_data or "regularMarketPrice" not in ticker_data:
+            print(f"No data found for symbol: {symbol}")
+            return None
+            
+        # Some symbols might not have a long name, fall back to the symbol itself
+        name = ticker_data.get("longName", ticker_data.get("shortName", symbol.upper()))
+        
+        # Extract the current price
+        price = ticker_data.get("regularMarketPrice", 0.0)
+        if price is None:
+            price = ticker_data.get("currentPrice", 0.0)
+        
         return {
-            "name": quote_data["companyName"],
-            "price": quote_data["latestPrice"],
+            "name": name,
+            "price": float(price),
             "symbol": symbol.upper()
         }
-    except requests.RequestException as e:
-        print(f"Request error: {e}")
-    except (KeyError, ValueError) as e:
-        print(f"Data parsing error: {e}")
-    return None
+    except Exception as e:
+        print(f"YFinance error: {e}")
+        return None
 
 
 def usd(value):
