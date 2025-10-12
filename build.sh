@@ -2,5 +2,8 @@
 # exit on error
 set -o errexit
 
-pip install --upgrade pip
-pip install -r requirements.txt
+# Install uv
+pip install uv
+
+# Sync dependencies using uv (uses pyproject.toml)
+uv sync --frozen

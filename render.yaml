@@ -2,10 +2,10 @@ services:
   - type: web
     name: tradetracker
     env: python
-    buildCommand: "./build.sh"
-    startCommand: "gunicorn app:app"
+    buildCommand: "bash build.sh"
+    startCommand: "uv run gunicorn app:app --bind 0.0.0.0:$PORT"
     envVars:
       - key: PYTHON_VERSION
-        value: 3.11.0
+        value: 3.13.0
       - key: SECRET_KEY
         generateValue: true
