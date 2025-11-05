@@ -4,7 +4,7 @@ Web-based stock portfolio management system with real-time tracking and transact
 
 ## Live Demo
 
-**Check out the live application**: [TradeTracker on PythonAnywhere](https://tanishquppal221.pythonanywhere.com/)
+**Check out the live application**: [TradeTracker](https://tradetracker-9xi9.onrender.com/)
 
 ## Key Features
 
@@ -39,11 +39,11 @@ Web-based stock portfolio management system with real-time tracking and transact
 
 ## Deployment
 
-This application is deployed on PythonAnywhere, a cloud platform designed to host, run, and code Python in the cloud.
+This application is deployed on OnRnder, a cloud platform designed to host, run, and code Python in the cloud.
 
-- **Live URL**: [https://tanishquppal221.pythonanywhere.com/](https://tanishquppal221.pythonanywhere.com/)
+- **Live URL**: [https://tradetracker-9xi9.onrender.com/](https://tradetracker-9xi9.onrender.com/)
 - **Deployment Date**: June 20, 2025
-- **Platform**: PythonAnywhere
+- **Platform**: OnRender
 
 ## Installation Guide
 
@@ -54,7 +54,7 @@ This application is deployed on PythonAnywhere, a cloud platform designed to hos
 2. **Dependencies**:
 
    ```bash
-   pip install -r requirements.txt
+     uv sync
    ```
 
 3. **Database Setup**:
